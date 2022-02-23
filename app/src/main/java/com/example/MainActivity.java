@@ -7,9 +7,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText nameField;
@@ -20,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButton;
     Button btn;
     String gender;
+    ListView listView;
     Spinner spinner;
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +59,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+        listView = findViewById(R.id.list);
+        String[] arrylist = {"Dhaka","Bogura","Sirajgonj","Rangpur","Dinajpur"};
+
         spinner = findViewById(R.id.spinner);
-        String[] location = {"Dhaka", "Rajshahi", "bogura"};
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,location);
-        spinner.setAdapter(adapter);
+        gridView = findViewById(R.id.gridView);
+
+
+        ArrayAdapter adapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,arrylist);
+        listView.setAdapter(adapter);
+
+        ArrayAdapter adapter1 = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,arrylist);
+        spinner.setAdapter(adapter1);
+
+        ArrayAdapter adapter2 = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,arrylist);
+        gridView.setAdapter(adapter2);
 
 
 
